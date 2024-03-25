@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
+    <div class=" div-center">
+        <h1 class="">PROCESS SCHEDULING VISUALISER</h1>
+        <p>Visualizer for 9 Scheduling Algorithms, like FCFS, SJF, RR, LJF, Priority.</p>
+    </div>
     
+    <!-- inputs -->
+
+    <div class="process-table div-center">
+        <h2>Process details</h2>
+        <table class="table" id="table">
+        </table>
+        <!-- <div id="show_time_quanta">
+            <h4 class="col-form-label" for="time_quanta">Time Quantum(For Round Robin Algorithm)</h4>
+            <input class="form-control" id="time_quanta" type="number" placeholder="90 (by default)" min="2">
+        </div> -->
+        <div class="buttons">
+            <button href="#modal_add" onclick="openAddModal()">Add Process</button>
+            <button href="#modal_edit" onclick="openEditModal()">Edit Process</button>
+            <button href="#modal_remove" onclick="openRemoveModal()">Remove Process</button>
+        </div>
+    </div>
+    <!-- add process form  -->
+    <div id="modal_add">
+        <div class="form-popup" id="addform">
+            <form action="/action_page.php" class="form-container">
+              <h1>Add Process</h1>
+              <br>
+              <label for="modal_process_id">Id</label>
+              <input disabled type="number" placeholder="Id" id="modal_process_id" required>
+              <label for="modal_burst_time" class="col-form-label">Burst Time</label>
+              <input id="modal_burst_time" class="form-control" type="number" min="0" required>
+              <div class="text-danger" id="error_bt" hidden>
+                Please enter value greater than 0
+              </div>
+              <label for="modal_arrival_time" class="col-form-label">Arrival Time</label>
+              <input id="modal_arrival_time" class="form-control" type="number" min="0" required placeholder="0">
+              <div class="text-danger" id="error_at" hidden>
+                Please enter value greater than or equal to 0
+              </div>
+              <label for="modal_priority" class="col-form-label">Priority</label>
+              <input id="modal_priority" class="form-control" type="number" min="0" required placeholder="0">
+              <div class="text-danger" id="error_pt" hidden>
+                Please enter value greater than or equal to 0
+              </div>
+              <button type="button" onclick="addProcess()">Add Process</button>
+              <button type="button" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+    </div>
+    <script async>
+        $(function () {
+          displayTable();
+        });
+    </script>
+    <script src="./main.js"></script>
 </body>
 </html>
