@@ -208,13 +208,12 @@ function editProcess() {
             processes[process_id - 1].burst_time = Number(new_burst_time);
             processes[process_id - 1].arrival_time = Number(new_arrival_time);
             processes[process_id - 1].priority = Number(new_priority);
-            // $("#modal_edit").modal("toggle");
+            closeForm();
         }
     } 
-    // else {
-    //     $("#modal_edit").modal("toggle");
-    // }
-    closeForm();
+    else {
+        closeForm();
+    }
     displayTable();
 }
 
