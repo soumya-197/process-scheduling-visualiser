@@ -93,6 +93,8 @@ function openAddModal(){
 
 function closeForm() {
     document.getElementById("addform").style.display = "none";
+    document.getElementById("editform").style.display = "none";
+    document.getElementById("removeform").style.display = "none";
 }
 
 function addProcess() {
@@ -129,4 +131,131 @@ function addProcess() {
         displayTable();
         // $("#modal_add").modal("toggle");
     }
+}
+
+
+function openEditModal() {
+    document.getElementById("editform").style.display = "block";
+    let $dropdown_edit = $('#modal_edit_select');
+
+    $dropdown_edit.empty();
+
+    for (i = 0; i < processes.length; i++) {
+        $dropdown_edit.append($("<option />").val(processes[i].id).text("Process " + processes[i].id));
+        // $dropdown.append(new Option("Process "+processes[i].id, processes[i].id))
+    }
+    if (processes.length != 0) {
+        $("#modal_edit_select").attr("disabled", false);
+        $("#modal_edit_burst_time").attr("disabled", false);
+        $("#modal_edit_arrival_time").attr("disabled", false);
+        $("#modal_edit_priority").attr("disabled", false);
+        $("#modal_edit_burst_time").attr("value", processes[0].burst_time);
+        $("#modal_edit_arrival_time").attr("value", processes[0].arrival_time);
+        $("#modal_edit_priority").attr("value", processes[0].priority);
+        $('#modal_edit_burst_time').val(processes[0].burst_time);
+        $('#modal_edit_arrival_time').val(processes[0].arrival_time);
+        $('#modal_edit_priority').val(processes[0].priority);
+    } else {
+        $("#modal_edit_select").attr("disabled", true);
+        $("#modal_edit_burst_time").attr("disabled", true);
+        $("#modal_edit_arrival_time").attr("disabled", true);
+        $("#modal_edit_priority").attr("disabled", true);
+    }
+    $dropdown_edit.on('change', function () {
+        let process_edit_selected = $("#modal_edit_select").val();
+        $("#modal_edit_burst_time").attr("value", processes[process_edit_selected - 1].burst_time);
+        $("#modal_edit_arrival_time").attr("value", processes[process_edit_selected - 1].arrival_time);
+        $("#modal_edit_priority").attr("value", processes[process_edit_selected - 1].priority);
+
+        $('#modal_edit_burst_time').val(processes[process_edit_selected - 1].burst_time);
+        $('#modal_edit_arrival_time').val(processes[process_edit_selected - 1].arrival_time);
+        $('#modal_edit_priority').val(processes[process_edit_selected - 1].priority);
+    });
+}
+
+function editProcess() {
+    if (processes.length != 0) {
+        if ($("#modal_edit_burst_time").val() < 1) {
+            $("#error_edit_bt").removeAttr("hidden");
+        } else {
+            $("#error_edit_bt").attr("hidden", true);
+        }
+        if ($("#modal_edit_arrival_time").val() < 0) {
+            $("#error_edit_at").removeAttr("hidden");
+        } else {
+            $("#error_edit_at").attr("hidden", true);
+        }
+        if ($("#modal_edit_priority").val() < 0) {
+            $("#error_edit_pt").removeAttr("hidden");
+        } else {
+            $("#error_edit_pt").attr("hidden", true);
+        }
+        if ($("#modal_edit_burst_time").val() > 0 && $("#modal_edit_arrival_time").val() >= 0 && $("#modal_edit_priority").val() >= 0) {
+            let process_id = Number($("#modal_edit_select").val());
+            let new_burst_time = Number($("#modal_edit_burst_time").val());
+            let new_arrival_time = Number($("#modal_edit_arrival_time").val());
+            let new_priority = Number($("#modal_edit_priority").val());
+            if (new_burst_time === "") {
+                new_burst_time = processes[process_id - 1].burst_time;
+            }
+            if (new_arrival_time === "") {
+                new_arrival_time = processes[process_id - 1].arrival_time;
+            }
+            if (new_priority === "") {
+                new_priority = processes[process_id - 1].priority;
+            }
+
+            processes[process_id - 1].burst_time = Number(new_burst_time);
+            processes[process_id - 1].arrival_time = Number(new_arrival_time);
+            processes[process_id - 1].priority = Number(new_priority);
+            // $("#modal_edit").modal("toggle");
+        }
+    } 
+    // else {
+    //     $("#modal_edit").modal("toggle");
+    // }
+    closeForm();
+    displayTable();
+}
+
+function orderProcess() {
+    let i = 0;
+    processes.forEach(function (p) {
+        p.id = i + 1;
+        i++;
+    });
+}
+
+function openRemoveModal() {
+    document.getElementById("removeform").style.display = "block";
+
+    // $('#modal_remove').modal();
+    // $('select').formSelect();
+    //   $("#modal_remove_select").formSelect();
+    // let options= processes.map(process=>`<option value =${process.id}>"Process "${process.id}</option>`).join('\n');
+    let $dropdown_remove = $('#modal_remove_select');
+    $dropdown_remove.empty();
+    for (i = 0; i < processes.length; i++) {
+        $dropdown_remove.append($("<option />").val(processes[i].id).text("Process " + processes[i].id));
+        //     // $dropdown.append(new Option("Process "+processes[i].id, processes[i].id))
+    }
+    // $('#modal_remove_select').html(options);
+}
+
+function removeProcess() {
+
+    let removing_array = $('#modal_remove_select').val();
+    let i = 0;
+    for (i = 0; i < removing_array.length; i++) {
+        let j = 0;
+        processes.forEach(function (p) {
+            if (removing_array[i] == p.id) {
+                processes.splice(j, 1);
+            }
+            j++;
+        });
+    }
+    closeForm();
+    orderProcess();
+    displayTable();
 }

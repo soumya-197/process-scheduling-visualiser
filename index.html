@@ -38,7 +38,7 @@
     <!-- add process form  -->
     <div id="modal_add">
         <div class="form-popup" id="addform">
-            <form action="/action_page.php" class="form-container">
+            <form class="form-container">
               <h1>Add Process</h1>
               <br>
               <label for="modal_process_id">Id</label>
@@ -62,6 +62,49 @@
               <button type="button" onclick="closeForm()">Close</button>
             </form>
           </div>
+    </div>
+    <div id="modal_edit">
+      <div class="form-popup" id="editform">
+          <form class="form-container">
+            <h1>Edit Process</h1>
+            <br>
+            <select id="modal_edit_select">
+              <option value="" disabled selected>Choose Process Id</option>
+            </select>
+
+            <label class="col-form-label" for="modal_edit_burst_time">Burst Time</label>
+            <input class="form-control" id="modal_edit_burst_time" type="number" min="0" class="validate" required>
+            <div class="text-danger" id="error_edit_bt" hidden>
+              Please enter value greater than 0
+            </div>
+            <label class="col-form-label" for="modal_edit_arrival_time">Arrival Time</label>
+            <input class="form-control" id="modal_edit_arrival_time" type="number" min="0" class="validate" required>
+            <div class="text-danger" id="error_edit_at" hidden>
+              Please enter value greater than or equal to 0
+            </div>
+            <label class="col-form-label" for="modal_edit_priority">Priority</label>
+            <input class="form-control" id="modal_edit_priority" type="number" min="0" class="validate" required>
+            <div class="text-danger" id="error_edit_pt" hidden>
+              Please enter value greater than or equal to 0
+            </div>
+            <button type="button" onclick="editProcess()">Submit</button>
+            <button type="button" onclick="closeForm()">Close</button>
+          </form>
+      </div>
+    </div>
+    <div id="modal_remove">
+      <div class="form-popup" id="removeform">
+          <form class="form-container">
+            <h1>Remove Processes</h1>
+            <p>Select one or more processes to remove</p>
+            <br>
+            <select multiple id="modal_remove_select" multiple>
+              <option value="" disabled>Select Process Id</option>
+            </select>
+            <button type="button" onclick="removeProcess()">Remove</button>
+            <button type="button" onclick="closeForm()">Close</button>
+          </form>
+      </div>
     </div>
     <script async>
         $(function () {

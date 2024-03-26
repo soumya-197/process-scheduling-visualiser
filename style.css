@@ -95,3 +95,8 @@ tr:hover{
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+select{
+  padding: 0.5rem;
+  background-color: rgb(244, 226, 239);
+  margin-bottom: 1rem;
+}
