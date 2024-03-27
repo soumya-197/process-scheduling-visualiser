@@ -1,9 +1,14 @@
 body{
     background-color: rgb(238, 194, 243);
 }
-
+*{
+  transition: opacity 0.15s ease-in-out, color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.main{
+  margin-top: 3rem;
+}
 .div-center{
-    margin: 2rem;
+    /* margin: 2rem; */
     font-size: x-large;
     text-align: center;
     justify-content: center;
@@ -15,12 +20,12 @@ h1,p{
     margin: 0;
 }
 .process-table{
-    margin: 4rem;
+    /* margin: 4rem; */
     padding: 2rem;   
     margin-top:0; 
     padding-top: 0;
 }
-.process-table td,th{
+.table td,th{
     padding: 1rem;
     border: 1px solid white;
     background-color: transparent;
@@ -99,4 +104,40 @@ select{
   padding: 0.5rem;
   background-color: rgb(244, 226, 239);
   margin-bottom: 1rem;
+}
+.timeq input{
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.dropdown{
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+}
+.gantt_FCFS{
+  display: none;
+  flex-direction: row;
+}
+
+.gantt-box {
+	position: relative;
+	border: 3px solid #73AD21;
+	height: 5px;
+	padding: 50px;
+	text-align: center;
+}
+
+.gantt-box-left {
+	position: absolute;
+	left: 0;
+	margin-left: 3px;
+	bottom: 0;
+}
+
+.gantt-box-right {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-right: 3px;
 }

@@ -14,7 +14,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class=" div-center">
+    <div class=" div-center main">
         <h1 class="">PROCESS SCHEDULING VISUALISER</h1>
         <p>Visualizer for 9 Scheduling Algorithms, like FCFS, SJF, RR, LJF, Priority.</p>
     </div>
@@ -25,16 +25,50 @@
         <h2>Process details</h2>
         <table class="table" id="table">
         </table>
-        <!-- <div id="show_time_quanta">
-            <h4 class="col-form-label" for="time_quanta">Time Quantum(For Round Robin Algorithm)</h4>
-            <input class="form-control" id="time_quanta" type="number" placeholder="90 (by default)" min="2">
-        </div> -->
         <div class="buttons">
             <button href="#modal_add" onclick="openAddModal()">Add Process</button>
             <button href="#modal_edit" onclick="openEditModal()">Edit Process</button>
             <button href="#modal_remove" onclick="openRemoveModal()">Remove Process</button>
         </div>
+        <div class="div-center timeq">
+          <p>Time Quantum(For Round Robin Algorithm)</p>
+          <input class="form-control" id="time_quanta" type="number" placeholder="90 (by default)" min="2">
+        </div>
     </div>
+
+    
+    <div class="evaluate div-center">
+      <button onclick="start()" id="start_btn">Evaluate</button>
+      <button id="drop_btn" data-bs-toggle="dropdown" onclick="opendropdown()">Select algorithm to evaluate</button>
+      <div class="dropdown form-popup form-container" id="dropdown">
+        <div>
+          <input type="checkbox" id="fcfs_switch" checked>   
+          <label for="fcfs_switch">FCFS</label>
+        </div>
+        <!-- <div>
+          <input type="checkbox" id="sjf_switch" checked>
+          <label for="sjf_switch">SJF</label>
+        </div>
+        <div>
+          <input type="checkbox" id="srtf_switch" checked>
+          <label for="srtf_switch">SJF(Preemptive)</label>
+        </div>
+        <div>
+          <input type="checkbox" id="priority_switch" checked>
+          <label for="priority_switch">Priority</label>
+        </div>
+        <div>
+          <input type="checkbox" id="roundrobin_switch" checked>
+          <label for="roundrobin_switch">Round Robin</label>
+        </div> -->
+        <br>
+        <p>Click on evaluate to run these algorithms</p>
+        <br>
+        <button type="button" onclick="closeForm()">Close</button>
+      </div>
+    </div>
+
+
     <!-- add process form  -->
     <div id="modal_add">
         <div class="form-popup" id="addform">
@@ -106,11 +140,45 @@
           </form>
       </div>
     </div>
+
+    <!-- Gantt Chart -->
+
+    <div id="gantt" hidden>
+      <div>
+        <h2>Gantt Charts</h2>
+        <button type="button" onclick="openGantt('gantt_FCFS')">FCFS</button>
+        <div id="gantt_FCFS" class="gantt_FCFS"></div>
+        <!-- <button onclick="openGantt(gantt_SJFNonPre)">SJF Non prem</button>
+        <div id="gantt_SJFNonPre"></div>
+        <button onclick="openGantt(gantt_SJFPre)">SJF prem</button>
+        <div id="gantt_SJFPre"></div>
+        <button onclick="openGantt(gantt_PriorityNonPre)">Priority Non prem</button>
+        <div id="gantt_PriorityNonPre"></div>
+        <button onclick="openGantt(gantt_PriorityPre)">Priority prem</button>
+        <div id="gantt_PriorityPre"></div>
+        <button onclick="openGantt(gantt_RoundRobin)">Round Robin</button>
+        <div id="gantt_RoundRobin"></div> -->
+      </div>
+    </div>
+
+    <!-- Result  -->
+
+    <div id="result" hidden>
+      <h2>Results</h2>
+      <table id="result_table" class="table" ></table>
+      <div>
+        <h3>The best algorithm for these processes is:</h3>
+        <ul id="final_result"></ul>
+      </div>
+    </div>
+
     <script async>
         $(function () {
           displayTable();
         });
     </script>
     <script src="./main.js"></script>
+    <script src="./algo.js"></script>
+    
 </body>
 </html>

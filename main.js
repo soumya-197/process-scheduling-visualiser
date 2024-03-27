@@ -95,6 +95,7 @@ function closeForm() {
     document.getElementById("addform").style.display = "none";
     document.getElementById("editform").style.display = "none";
     document.getElementById("removeform").style.display = "none";
+    document.getElementById("dropdown").style.display="none";
 }
 
 function addProcess() {
@@ -258,3 +259,77 @@ function removeProcess() {
     orderProcess();
     displayTable();
 }
+
+function opendropdown(){
+    document.getElementById("dropdown").style.display="flex";
+}
+function openGantt(id) {
+    if(document.getElementById(id).style.display=="none") document.getElementById(id).style.display="flex";
+    else document.getElementById(id).style.display="none"
+    // if ($(id).attr("hidden"))
+    //     $(id).removeAttr("hidden");
+    // else
+    //     $(id).attr("hidden", true);
+}
+function start() {
+    init();
+    $("#gantt").removeAttr("hidden");
+    $("#result").removeAttr("hidden");
+    // $('[data-toggle="tooltip"]').tooltip();
+    // let checked = [false, false, false, false, false, false, false, false, false]
+    let checked=[false]
+    if ($("#fcfs_switch").prop('checked') === true) {
+        FCFS(false);
+        checked[0] = true;
+    }
+    // if ($("#sjf_switch").prop('checked') === true) {
+    //     SJFNonPre(false);
+    //     checked[1] = true;
+    // }
+    // if ($("#srtf_switch").prop('checked') === true) {
+    //     SJFPre(false);
+    //     checked[2] = true;
+    // }
+    // if ($("#priority_switch").prop('checked') === true) {
+    //     priorityNonPre(false);
+    //     checked[5] = true;
+    // }
+    // if ($("#priority_pre_switch").prop('checked') === true) {
+    //     priorityPre(false);
+    //     checked[6] = true;
+    // }
+    // if ($("#roundrobin_switch").prop('checked') === true) {
+    //     roundRobin(false);
+    //     checked[7] = true;
+    // }
+
+    displayGanttChart();
+    displayResultTable();
+    findBest(checked);
+
+    for (b in bestAlgo) {
+        let row = "";
+        row += "<span>" + "Algorithm" + " : " + bestAlgo[b].algorithm + "<br></span>";
+        row += "<span>" + "CPU Utilization" + " : " + bestAlgo[b].cpu_util + "<br></span>";
+        row += "<span>" + "Throughput" + " : " + bestAlgo[b].throughput + "<br></span>";
+        row += "<span>" + "TurnAround Time" + " : " + bestAlgo[b].tat + "<br></span>";
+        row += "<span>" + "Waiting Time" + " : " + bestAlgo[b].wt + "<br></span>";
+        row += "<span>" + "Response Time" + " : " + bestAlgo[b].rt + "<br></span>";
+        $("#final_result").append(`<li>${row}<br></li>`);
+    }
+    $('html, body').animate({
+        scrollTop: $("#result_div").offset().top
+    }, 0);
+}
+
+// $("#roundrobin_switch").on('change', () => {
+//     if ($("#roundrobin_switch").prop('checked') === false) {
+//         $('#show_time_quanta').hide();
+//     }
+//     if ($("#roundrobin_switch").prop('checked') === true) {
+//         $('#show_time_quanta').show();
+//     }
+// })
+// $("#vis_stop").on('click', () => {
+//     stop_flag = true;
+// })
