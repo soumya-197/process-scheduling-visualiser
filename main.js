@@ -333,3 +333,10 @@ function start() {
 // $("#vis_stop").on('click', () => {
 //     stop_flag = true;
 // })
+
+function opendropdown2(){
+    document.getElementById("dropdown2").style.display="flex"
+}
+$("#vis_stop").on('click', () => {
+    stop_flag = true;
+})

@@ -46,7 +46,9 @@ tr:hover{
     flex-direction: row;
     justify-content: start;
 }
- button{
+
+ button,.btn{
+    color: black;
     padding: 1rem;
     margin: 1rem;
     margin-top: 0;
@@ -56,7 +58,7 @@ tr:hover{
     background-color: rgb(224, 118, 236);
     transition: all 0.5s;
 }
- button:hover{
+ button:hover,.btn:hover{
     background-color: rgb(244, 226, 239);
 }
 
@@ -140,4 +142,43 @@ select{
 	right: 0;
 	bottom: 0;
 	margin-right: 3px;
+}
+#vis_btn {
+	background-color: hsl(273, 100%, 66%);
+	transition: opacity 0.15s ease-in-out, color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: aliceblue;
+}
+
+
+.cpu {
+	background: url('./images/cpu.png') no-repeat;
+	background-size: cover;
+	width: 120px;
+	height: 120px;
+	margin: 20px;
+}
+
+.readyqueue {
+	background: url('./images/fast-time.png') no-repeat;
+	background-size: contain;
+	height: 120px;
+	width: 120px;
+}
+.fitem {
+	display: flex;
+	/* border: 2px solid #73AD21; */
+	width: 120px;
+	height: 120px;
+	/* margin: 20px; */
+	justify-content: center;
+	align-items: center;
+}
+
+.rq{
+  display: flex;
+  flex-direction: row;
+}
+.df{
+  display: flex;
+  flex-direction: row;
 }

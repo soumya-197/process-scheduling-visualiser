@@ -68,6 +68,11 @@
       </div>
     </div>
 
+    <!-- <div class="visualise div-center"> -->
+      <!-- <button onclick="opendropdown2()" id="vis_btn">Visualise</button> -->
+      <!-- <div id="dropdown2" class="dropdown form-popup form-container"> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
     <!-- add process form  -->
     <div id="modal_add">
@@ -146,7 +151,10 @@
     <div id="gantt" hidden>
       <div>
         <h2>Gantt Charts</h2>
+        <div class="df">
         <button type="button" onclick="openGantt('gantt_FCFS')">FCFS</button>
+        <button class="btn btn-outline-dark w-100" onclick="FCFS(true)">Visualise</button>
+        </div>
         <div id="gantt_FCFS" class="gantt_FCFS"></div>
         <!-- <button onclick="openGantt(gantt_SJFNonPre)">SJF Non prem</button>
         <div id="gantt_SJFNonPre"></div>
@@ -169,6 +177,34 @@
       <div>
         <h3>The best algorithm for these processes is:</h3>
         <ul id="final_result"></ul>
+      </div>
+    </div>
+
+    <!-- visualisation -->
+    <div id="vis" hidden>
+      <h2>Algorithm: <span id="vis_name"></span></h2>
+      <h2>Ready Queue</h2>
+      <div class="df">
+      <div class="readyqueue"></div>
+      <div id="vis_rq" class="rq">
+        P1
+      </div>
+    </div>
+      <div class="wq" hidden>
+        <h2>Waiting Queue</h2>
+        <div id="vis_wq">
+          P4
+        </div>
+      </div>
+      <div>
+        <h2>CPU</h2>
+        <div class="cpu" id="vis_cpu">
+          P1
+        </div>
+        <div>
+          <h2>Time: <span id="vis_time"></span></h2>
+          <a class="btn" href="javascript:void(0)" id="vis_stop">STOP!</a>
+        </div>
       </div>
     </div>
 
