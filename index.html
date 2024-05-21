@@ -16,7 +16,7 @@
 <body>
     <div class=" div-center main">
         <h1 class="">PROCESS SCHEDULING VISUALISER</h1>
-        <p>Visualizer for 9 Scheduling Algorithms, like FCFS, SJF, RR, LJF, Priority.</p>
+        <p>Visualizer for Scheduling Algorithms, like FCFS, SJF, RR, Priority.</p>
     </div>
     
     <!-- inputs -->
@@ -30,7 +30,7 @@
             <button href="#modal_edit" onclick="openEditModal()">Edit Process</button>
             <button href="#modal_remove" onclick="openRemoveModal()">Remove Process</button>
         </div>
-        <div class="div-center timeq">
+        <div class="div-center timeq" id="show_time_quanta">
           <p>Time Quantum(For Round Robin Algorithm)</p>
           <input class="form-control" id="time_quanta" type="number" placeholder="90 (by default)" min="2">
         </div>
@@ -45,22 +45,22 @@
           <input type="checkbox" id="fcfs_switch" checked>   
           <label for="fcfs_switch">FCFS</label>
         </div>
-        <!-- <div>
-          <input type="checkbox" id="sjf_switch" checked>
+        <div>
+          <input type="checkbox" id="sjf_switch" checked>   
           <label for="sjf_switch">SJF</label>
         </div>
         <div>
-          <input type="checkbox" id="srtf_switch" checked>
-          <label for="srtf_switch">SJF(Preemptive)</label>
+          <input type="checkbox" id="srtf_switch" checked>   
+          <label for="srtf_switch">SJF (Prempetive)</label>
         </div>
         <div>
-          <input type="checkbox" id="priority_switch" checked>
+          <input type="checkbox" id="priority_switch" checked>   
           <label for="priority_switch">Priority</label>
         </div>
         <div>
-          <input type="checkbox" id="roundrobin_switch" checked>
+          <input type="checkbox" id="roundrobin_switch" checked>   
           <label for="roundrobin_switch">Round Robin</label>
-        </div> -->
+        </div>
         <br>
         <p>Click on evaluate to run these algorithms</p>
         <br>
@@ -156,6 +156,28 @@
         <button class="btn btn-outline-dark w-100" onclick="FCFS(true)">Visualise</button>
         </div>
         <div id="gantt_FCFS" class="gantt_FCFS"></div>
+        <div class="df">     
+        <button type="button" onclick="openGantt('gantt_SJFNonPre')">SJF Non Premptive</button>
+        <button class="btn btn-outline-dark w-100" onclick="SJFNonPre(true)">Visualise</button>
+        </div>
+        <div id="gantt_SJFNonPre" class="gantt_SJFnonprem"></div>
+        <div class="df">
+        <button type="button" onclick="openGantt('gantt_SJFPre')">SJF Premptive</button>
+        <button class="btn btn-outline-dark w-100" onclick="SJFPre(true)">Visualise</button>
+        </div>
+        <div id="gantt_SJFPre" class="gantt_SJFprem"></div>
+        <div class="df">
+        <button type="button" onclick="openGantt('gantt_PriorityNonPre')">Priority</button>
+        <button class="btn btn-outline-dark w-100" onclick="priorityNonPre(true)">Visualise</button>
+        </div>
+        <div id="gantt_PriorityNonPre" class="gantt_priority"></div>
+        <div class="df">
+        <button type="button" onclick="openGantt('gantt_RoundRobin')">Round Robin</button>
+        <button class="btn btn-outline-dark w-100" onclick="roundRobin(true)">Visualise</button>
+        </div>
+        <div id="gantt_RoundRobin" class="gantt_rr"></div>
+
+
         <!-- <button onclick="openGantt(gantt_SJFNonPre)">SJF Non prem</button>
         <div id="gantt_SJFNonPre"></div>
         <button onclick="openGantt(gantt_SJFPre)">SJF prem</button>
@@ -174,7 +196,7 @@
     <div id="result" hidden>
       <h2>Results</h2>
       <table id="result_table" class="table" ></table>
-      <div>
+      <div id="result_div">
         <h3>The best algorithm for these processes is:</h3>
         <ul id="final_result"></ul>
       </div>

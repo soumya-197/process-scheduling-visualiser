@@ -117,9 +117,10 @@ select{
   align-items: flex-start;
   font-size: 1rem;
 }
-.gantt_FCFS{
+.gantt_FCFS, .gantt_SJFnonprem, .gantt_SJFprem, .gantt_priority, .gantt_rr{
   display: none;
   flex-direction: row;
+  margin-bottom: 1rem;
 }
 
 .gantt-box {

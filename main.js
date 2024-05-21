@@ -282,26 +282,26 @@ function start() {
         FCFS(false);
         checked[0] = true;
     }
-    // if ($("#sjf_switch").prop('checked') === true) {
-    //     SJFNonPre(false);
-    //     checked[1] = true;
-    // }
-    // if ($("#srtf_switch").prop('checked') === true) {
-    //     SJFPre(false);
-    //     checked[2] = true;
-    // }
-    // if ($("#priority_switch").prop('checked') === true) {
-    //     priorityNonPre(false);
-    //     checked[5] = true;
-    // }
-    // if ($("#priority_pre_switch").prop('checked') === true) {
-    //     priorityPre(false);
-    //     checked[6] = true;
-    // }
-    // if ($("#roundrobin_switch").prop('checked') === true) {
-    //     roundRobin(false);
-    //     checked[7] = true;
-    // }
+    if ($("#sjf_switch").prop('checked') === true) {
+        SJFNonPre(false);
+        checked[1] = true;
+    }
+    if ($("#srtf_switch").prop('checked') === true) {
+        SJFPre(false);
+        checked[2] = true;
+    }
+    if ($("#priority_switch").prop('checked') === true) {
+        priorityNonPre(false);
+        checked[5] = true;
+    }
+    if ($("#priority_pre_switch").prop('checked') === true) {
+        priorityPre(false);
+        checked[6] = true;
+    }
+    if ($("#roundrobin_switch").prop('checked') === true) {
+        roundRobin(false);
+        checked[7] = true;
+    }
 
     displayGanttChart();
     displayResultTable();
@@ -322,17 +322,17 @@ function start() {
     }, 0);
 }
 
-// $("#roundrobin_switch").on('change', () => {
-//     if ($("#roundrobin_switch").prop('checked') === false) {
-//         $('#show_time_quanta').hide();
-//     }
-//     if ($("#roundrobin_switch").prop('checked') === true) {
-//         $('#show_time_quanta').show();
-//     }
-// })
-// $("#vis_stop").on('click', () => {
-//     stop_flag = true;
-// })
+$("#roundrobin_switch").on('change', () => {
+    if ($("#roundrobin_switch").prop('checked') === false) {
+        $('#show_time_quanta').hide();
+    }
+    if ($("#roundrobin_switch").prop('checked') === true) {
+        $('#show_time_quanta').show();
+    }
+})
+$("#vis_stop").on('click', () => {
+    stop_flag = true;
+})
 
 function opendropdown2(){
     document.getElementById("dropdown2").style.display="flex"
