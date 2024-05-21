@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(238, 194, 243);
+    background-color: rgb(175, 191, 235);
 }
 *{
   transition: opacity 0.15s ease-in-out, color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -55,7 +55,7 @@ tr:hover{
     font-size: large;
     /* border:  */
     border-radius: 1rem;
-    background-color: rgb(224, 118, 236);
+    background-color: rgb(219, 235, 238);
     transition: all 0.5s;
 }
  button:hover,.btn:hover{
